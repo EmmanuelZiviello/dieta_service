@@ -42,11 +42,11 @@ def get_session(role):
 
 def set_DB_CONFIG():
     global DB_CONFIG
-    config = ConfigLoader.load_config()
+    config = ConfigLoader.load_config_from_class()
     DB_CONFIG = {
-        'admin': config.get('DB_URI_ADMIN'),
-        'patient': config.get('DB_URI_PATIENT'),
-        'dietitian':config.get('DB_URI_DIETITIAN')
+        'admin': config.DB_URI_ADMIN,
+        'patient': config.DB_URI_PATIENT,
+        'dietitian':config.DB_URI_DIETITIAN
     }
 
 def create_db():
