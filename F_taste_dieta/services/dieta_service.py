@@ -14,7 +14,7 @@ class DietaService:
         
         #invia tramite kafka per capire se è presente il paziente nel db e riceve status e id_nutrizionista
         message={"id_paziente":id_paziente}
-        send_kafka_message("patient.existGet",message)
+        send_kafka_message("patient.existGet.request",message)
         response_paziente=wait_for_kafka_response(["patient.existGet.success", "patient.existGet.failed"])
         #controlli su response_paziente
         if response_paziente is None:
@@ -25,7 +25,7 @@ class DietaService:
             if paziente_id_nutrizionista:
                 #invia tramite kafka per capire se è presente il nutrizionista nel db e riceve il suo id
                 message={"email_nutrizionista":email_nutrizionista}
-                send_kafka_message("dietitian.existGet",message)
+                send_kafka_message("dietitian.existGet.request",message)
                 response_nutrizionista=wait_for_kafka_response(["dietitian.existGet.success", "dietitian.existGet.failed"])
                 #controlli su response_nutrizionista
                 if response_nutrizionista is None:
@@ -75,7 +75,7 @@ class DietaService:
         id_paziente=s_paziente["id_paziente"]
         #invia tramite kafka per capire se è presente il paziente nel db e riceve status e id_nutrizionista
         message={"id_paziente":id_paziente}
-        send_kafka_message("patient.existGet",message)
+        send_kafka_message("patient.existGet.request",message)
         response_paziente=wait_for_kafka_response(["patient.existGet.success", "patient.existGet.failed"])
         #controlli su response_paziente
         if response_paziente is None:
@@ -86,7 +86,7 @@ class DietaService:
             if paziente_id_nutrizionista:
                 #invia tramite kafka per capire se è presente il nutrizionista nel db e riceve il suo id
                 message={"email_nutrizionista":email_nutrizionista}
-                send_kafka_message("dietitian.existGet",message)
+                send_kafka_message("dietitian.existGet.request",message)
                 response_nutrizionista=wait_for_kafka_response(["dietitian.existGet.success", "dietitian.existGet.failed"])
                 #controlli su response_nutrizionista
                 if response_nutrizionista is None:
@@ -180,7 +180,7 @@ class DietaService:
         id_paziente=s_paziente["id_paziente"]
          #invia tramite kafka per capire se è presente il paziente nel db e riceve status e id_nutrizionista
         message={"id_paziente":id_paziente}
-        send_kafka_message("patient.existGet",message)
+        send_kafka_message("patient.existGet.request",message)
         response_paziente=wait_for_kafka_response(["patient.existGet.success", "patient.existGet.failed"])
         #controlli su response_paziente
         if response_paziente is None:
@@ -191,7 +191,7 @@ class DietaService:
             if paziente_id_nutrizionista:
                 #invia tramite kafka per capire se è presente il nutrizionista nel db e riceve il suo id
                 message={"email_nutrizionista":email_nutrizionista}
-                send_kafka_message("dietitian.existGet",message)
+                send_kafka_message("dietitian.existGet.request",message)
                 response_nutrizionista=wait_for_kafka_response(["dietitian.existGet.success", "dietitian.existGet.failed"])
                 #controlli su response_nutrizionista
                 if response_nutrizionista is None:
@@ -271,7 +271,7 @@ class DietaService:
         id_paziente=s_paziente["id_paziente"]
         #invia tramite kafka per capire se è presente il paziente nel db e riceve status e id_nutrizionista
         message={"id_paziente":id_paziente}
-        send_kafka_message("patient.existGet",message)
+        send_kafka_message("patient.existGet.request",message)
         response_paziente=wait_for_kafka_response(["patient.existGet.success", "patient.existGet.failed"])
         #controlli su response_paziente
         if response_paziente is None:
@@ -282,7 +282,7 @@ class DietaService:
             if paziente_id_nutrizionista:
                 #invia tramite kafka per capire se è presente il nutrizionista nel db e riceve il suo id
                 message={"email_nutrizionista":email_nutrizionista}
-                send_kafka_message("dietitian.existGet",message)
+                send_kafka_message("dietitian.existGet.request",message)
                 response_nutrizionista=wait_for_kafka_response(["dietitian.existGet.success", "dietitian.existGet.failed"])
                 #controlli su response_nutrizionista
                 if response_nutrizionista is None:
