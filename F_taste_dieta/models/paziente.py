@@ -13,7 +13,7 @@ class PazienteModel(Base):
     sesso = Column(Boolean)
     fk_nutrizionista = Column(Integer, ForeignKey('nutrizionista.id_nutrizionista', onupdate="CASCADE"), nullable=True)
     nutrizionista = relationship("NutrizionistaModel", back_populates='pazienti', lazy=True)
-    dieta_paziente = relationship("DietaModel",  back_populates='paziente' , lazy=True, cascade='delete')
+    
 
     def __init__(self, id_paziente, email, password, data_nascita=None, sesso=None, fk_nutrizionista=None):
         self.id_paziente = id_paziente

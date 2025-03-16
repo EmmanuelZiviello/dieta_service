@@ -38,20 +38,19 @@ dieta_request_model = nutrizionista_ns.model('dieta model for get delete and pos
 
 
 class DietaController(Resource):
+    #da provare
     @nutrizionista_required()
     @nutrizionista_ns.doc("ricevi la dieta del paziente", params={'id_paziente': 'PAZ1234'})
     def get(self):
         request_args = request.args
         email_nutrizionista = get_jwt_identity()
 
-        paziente_schema_validate = PazienteSchema(only=['id_paziente'])
-        validation_errors = paziente_schema_validate.validate(request_args)
-        if validation_errors:
-            return validation_errors, 400
+        if "id_paziente" not in request_args:
+            return {"error": "Il campo id_paziente è obbligatorio."}, 400
 
         return DietaService.get_dieta_paziente(request_args['id_paziente'], email_nutrizionista)
     
-
+    #da provare
     @nutrizionista_required()
     @nutrizionista_ns.expect(put_piano_giornaliero_request_model)
     @nutrizionista_ns.doc('modifica dieta giornaliera')
@@ -60,6 +59,7 @@ class DietaController(Resource):
         email_nutrizionista = get_jwt_identity()
         return DietaService.modifica_piano_giornaliero(request_json, email_nutrizionista)
     
+    #da provare
     @nutrizionista_required()
     @nutrizionista_ns.expect(dieta_request_model)
     @nutrizionista_ns.doc("elimina la dieta del paziente")
@@ -69,6 +69,7 @@ class DietaController(Resource):
         return DietaService.elimina_dieta(request_json, email_nutrizionista)
     
 
+    #da provare
     @nutrizionista_required()
     @nutrizionista_ns.expect(dieta_request_model)
     @nutrizionista_ns.doc('crea una dieta per il paziente')
@@ -79,7 +80,8 @@ class DietaController(Resource):
     
 
 class DietaPazienteController(Resource):
-
+    
+    #da provare
     @paziente_required()
     @paziente_ns.doc("ricevi la dieta del paziente")
     def get(self):

@@ -6,7 +6,7 @@ class DietaRepository:
     @staticmethod
     def find_dieta_by_id_paziente(id_paziente, session=None):
         session=session or get_session('dietitian')
-        result = session.query(DietaModel).filter_by(fk_paziente=id_paziente).first()
+        result = session.query(DietaModel).filter_by(id_paziente=id_paziente).first()
         return result
     
     @staticmethod

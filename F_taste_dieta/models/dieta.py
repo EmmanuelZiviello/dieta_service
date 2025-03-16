@@ -9,20 +9,16 @@ class DietaModel(Base):
 
     id_dieta = Column(Integer, primary_key=True)
     data = Column(TIMESTAMP)
-    fk_paziente = Column(String(10),
-                            ForeignKey("paziente.id_paziente", onupdate="CASCADE", ondelete="CASCADE"), 
-                            nullable=False, 
-                            unique = True)
+    id_paziente = Column(String(7), nullable=False, unique=True)  # Eliminata la ForeignKey
     pasti_dieta = relationship("PastoModel", back_populates = 'dieta', lazy=True, cascade='delete')
-    paziente = relationship("PazienteModel", back_populates='dieta_paziente', lazy=True)
 
-    def __init__(self, fkpaziente, data = datetime.now()):
-        self.fkpaziente = fkpaziente
+    def __init__(self, id_paziente, data = datetime.now()):
+        self.id_paziente = id_paziente
         self.data = data
         
     def __repr__(self):
-        return 'DietaModel(fk_paziente=%s, data=%s, id_dieta=%s)' % (self.fk_paziente, self.data, self.id_dieta)
+        return 'DietaModel(id_paziente=%s, data=%s, id_dieta=%s)' % (self.id_paziente, self.data, self.id_dieta)
 
     def __json__(self):
-        return { 'fk_paziente': self.fk_paziente, 'data': self.data, 'id_dieta': self.id_dieta }
+        return { 'id_paziente': self.id_paziente, 'data': self.data, 'id_dieta': self.id_dieta }
 

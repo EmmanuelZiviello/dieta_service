@@ -8,8 +8,7 @@ class AlimentoService:
     @staticmethod
     def get_all_alimenti():
         session=get_session('dietitian')
-        try:
-            alimenti = AlimentoRepository.get_all_alimenti(session)
-            return alimenti_schema.dump(alimenti), 200
-        finally:
-            session.close()
+        alimenti = AlimentoRepository.get_all_alimenti(session)
+        output_richiesta=alimenti_schema.dump(alimenti)
+        session.close()
+        return output_richiesta, 200

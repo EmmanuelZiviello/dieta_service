@@ -46,7 +46,7 @@ def create_dieta(paziente: "PazienteModel", session) -> "DietaModel":
     dieta = DietaModel(paziente.id_paziente)
     dieta.paziente = paziente
     DietaRepository.add_dieta(dieta, session)  # Usa il repository per gestire l'inserimento
-    return dieta
+    
 
 def get_names_of_meals():
     return ['colazione' , 'spuntino_1', 'pranzo', 'spuntino_2', 'cena']
