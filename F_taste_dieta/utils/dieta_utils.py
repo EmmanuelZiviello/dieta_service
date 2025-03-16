@@ -42,9 +42,8 @@ def get_dieta(id_paziente, session: scoped_session):
     
     return dieta
 
-def create_dieta(paziente: "PazienteModel", session) -> "DietaModel":
-    dieta = DietaModel(paziente.id_paziente)
-    dieta.paziente = paziente
+def create_dieta(id_paziente:str , session) -> "DietaModel":
+    dieta = DietaModel(id_paziente)
     DietaRepository.add_dieta(dieta, session)  # Usa il repository per gestire l'inserimento
     
 
