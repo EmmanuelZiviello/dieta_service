@@ -11,7 +11,6 @@ from F_taste_dieta.kafka.kafka_producer import send_kafka_message
 class DietaService:
     @staticmethod
     def get_dieta_paziente(id_paziente, email_nutrizionista):
-        
         #invia tramite kafka per capire se è presente il paziente nel db e riceve status e id_nutrizionista
         message={"id_paziente":id_paziente}
         send_kafka_message("patient.existGet.request",message)
