@@ -21,3 +21,9 @@ class AlimentoRepository:
         session=session or get_session('dietitian')
         result = session.query(AlimentoModel).all()
         return result
+    
+    @staticmethod
+    def add(alimento, session=None):
+        session=session or get_session('dietitian')
+        session.add(alimento)
+        session.commit()    

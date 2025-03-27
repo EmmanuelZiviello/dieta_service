@@ -2,7 +2,6 @@ from F_taste_dieta.repositories.dieta_repository import DietaRepository
 from F_taste_dieta.repositories.pasto_repository import PastoRepository
 from F_taste_dieta.repositories.alimento_repository import AlimentoRepository
 from F_taste_dieta.models.dieta import DietaModel
-from F_taste_dieta.models.paziente import PazienteModel
 from F_taste_dieta.schemas.pasto import PastoSchema
 from F_taste_dieta.schemas.pietanza import PietanzaSchema
 from sqlalchemy.orm import scoped_session
